@@ -1,0 +1,185 @@
+\documentclass[10pt,a4paper,landscape]{article}
+\usepackage{multicol}
+\usepackage{multienum}
+\usepackage{comment}
+\usepackage[landscape]{geometry}
+\usepackage[x11names]{xcolor}
+\usepackage{enumitem}
+\usepackage{calc}
+\usepackage{siunitx}
+% Set paper size and margins
+\geometry{top=.5cm,left=.5cm,right=.5cm,bottom=.5cm}
+
+% Turn off header and footer
+\pagestyle{empty}
+
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\subsection}[1]{\@startsection{subsection}{2}{0mm}%
+                                {20ex}%
+                                {0.8ex}%
+                                {\color{white}\normalfont\small\bfseries}{\colorbox{darkgray}{\makebox[\linewidth-\fboxsep*2]{#1\hfill}}}}
+\makeatother
+\newenvironment{chklstsection}[1]{%
+  \begin{minipage}{\columnwidth}%
+    \subsection{#1}\begin{itemize}[label={},left=0em,labelsep=0em,nosep]}%
+    {\end{itemize}\vspace{8pt}\end{minipage}}
+\newenvironment{chklstsection*}[1]{%
+  \begin{minipage}{\columnwidth}%
+    \subsection{#1}}%
+    {\end{minipage}}
+\newcommand{\chklstitem}[2]{\item#1\dotfill{\textbf{#2}}}
+\newcommand{\chklstitemn}[2]{\item#1\dotfill{#2}}
+
+\newcommand{\spanitem}[1]{\item{
+\vspace{0.6em}
+\begin{center}
+\textbf{#1}
+\end{center}}
+\vspace{0.5em}
+}
+
+\newcommand{\pagetitle}[1]{\begin{center}%
+\large{\colorbox{DodgerBlue3}{\makebox[\linewidth-\fboxsep*2]{\textbf{\color{white}#1}}}}
+  \end{center}%
+}
+\newcommand{\Vspeed}[1]{\ensuremath{\text{V}_{\text{#1}}}}%
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+\sisetup{detect-all,range-units=single,range-phrase=\,--\,}
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+
+\raggedright
+\raggedcolumns
+\footnotesize
+\pagetitle{Air Antwerp Fokker 50 Checklist}
+
+\begin{multicols}{4}
+% multicol parameters
+% These lengths are set only within the four main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{chklstsection}{Flight Deck Safety Inspection}
+  \chklstitem{Circuit Breakers}{CHECK}
+	\chklstitem{Landing Gear Selector}{DOWN}
+	\chklstitem{Oxygen}{CHECK}
+	\chklstitem{Emergency Equipment}{CHECK}
+	\chklstitem{Aircraft Documents}{CHECK}
+	\chklstitem{External Power}{ON}
+	\chklstitem{Navigation Lights}{ON}
+\end{chklstsection}
+
+\begin{chklstsection}{Flight Deck Preparation}
+  \chklstitem{Fresh Air Scoops}{SHUT}
+  \chklstitem{Towing Switch}{OFF}
+  \chklstitem{Batteries}{ON}
+  \chklstitem{Emergency Lights}{CHECK/ARMED}
+  \chklstitem{Engine Fire Control}{CHECK}
+  \chklstitem{Heading Mode Switches}{SLAVED}
+  \chklstitem{Air Conditioning}{CHECK}
+  \chklstitem{Radar}{STBY}
+  \chklstitem{Gear Pins}{ON BOARD}
+\end{chklstsection}
+
+\begin{chklstsection}{Before Start}
+	\chklstitem{Parking Brake}{SET}
+	\chklstitem{Agent Low Pressure Light}{OUT}
+	\chklstitem{Hydraulics}{CHECK}
+	\chklstitem{Flight Recorder}{SET}
+	\chklstitem{Pressurisation}{SET}
+	\chklstitem{Seatbelts/No Smoking}{ON/ON}
+	\chklstitem{Nav/Comms}{SET}
+	\chklstitem{Flight Instruments}{CROSSCHECKED}
+	\chklstitem{ERP}{T/O}
+	\chklstitem{Fuel Totaliser}{KGs}
+	\chklstitem{Test Panel}{TESTED}
+	\chklstitem{Trims}{SET}
+	\spanitem{Cleared For Start}
+	\chklstitem{T/O Data}{Prepared}
+	\chklstitem{Power Levers}{GND IDLE}
+	\chklstitem{Anti Collision Light}{ON}
+	\chklstitem{Start P/B}{ON}
+	\chklstitem{Fuel Pumps}{ON}
+	\chklstitem{Doors}{CLOSED}
+	\spanitem{Start Engines}
+\end{chklstsection}
+
+\begin{chklstsection}{After Start}
+	\chklstitem{External Power}{REMOVED}
+	\chklstitem{Start P/B}{OFF}
+	\chklstitem{Anti Icing}{AS REQ}
+	\chklstitem{Alert Lights}{OUT}
+	\chklstitem{Prop Overspeed}{TESTED}
+	\chklstitem{Flaps}{SET}
+	\chklstitem{Briefing \& FMP}{COMPLETED}
+	\chklstitem{Transponder FID}{SET}
+\end{chklstsection}
+
+\begin{chklstsection}{Before Take Off}
+	\chklstitem{Strobe Lights}{ON}
+	\chklstitem{Flight Controls}{CHECK}
+	\chklstitem{T/O Configuration}{CHECK}
+	\chklstitem{Radar}{ON/STBY}
+	\chklstitem{Transponder}{TARA}
+	\chklstitem{GND Idle Stop}{ON}
+	\chklstitem{Cabin}{SECURED/ADVISED}
+	\spanitem{Take Off}
+\end{chklstsection}
+
+\begin{chklstsection}{After Take Off}
+	\chklstitem{Gear}{UP}
+	\chklstitem{Flaps}{UP}
+	\chklstitem{ERP}{AS REQ}
+	\chklstitem{Altimeters}{SET}
+\end{chklstsection}
+
+\begin{chklstsection}{Approach}
+	\chklstitem{Pressurisation}{SET}
+	\chklstitem{Altimeters}{SET}
+	\chklstitem{IAS Bugs}{SET}
+	\chklstitem{GND Idle Stop}{OFF}
+	\chklstitem{Steep App}{AS REQ}
+\end{chklstsection}
+
+\begin{chklstsection}{Landing}
+	\chklstitem{Cabin}{SECURED}
+	\chklstitem{Landing Gear}{DOWN}
+	\chklstitem{ERP}{GA}
+	\chklstitem{Flaps}{SET}
+\end{chklstsection}
+
+\begin{chklstsection}{Shut Down}
+	\chklstitem{Parking Brake}{SET}
+	\chklstitem{External Power}{AS REQ}
+	\chklstitem{Fuel Pumps}{OFF}
+	\chklstitem{Anti Ice}{OFF}
+	\chklstitem{Seatbelts}{OFF}
+	\chklstitem{Strobe Lights}{OFF}
+	\chklstitem{Anti Collision Lights}{OFF}
+	\chklstitem{Landing/Taxi Light}{OFF}
+	\chklstitem{ERP}{T/O}
+	\chklstitem{Fuel Levers}{SHUT}
+	\chklstitem{Flaps}{UP}
+	\chklstitem{Radar}{STBY}
+	\chklstitem{Transponder}{STBY}
+	\chklstitem{Flight Controls}{LOCKED}
+	\spanitem{Final Stop}
+	\chklstitem{Radar}{OFF}
+	\chklstitem{Emergency Lights}{OFF}
+	\chklstitem{Batteries}{OFF}
+	\chklstitem{Oxygen Bottle}{CLOSED}
+	\chklstitem{GRND SERVICE LIGHT Switch}{OFF}
+	\chklstitem{Gear Pins}{INSTALLED}
+\end{chklstsection}
+
+\end{multicols}
+\end{document}

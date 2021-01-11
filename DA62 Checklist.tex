@@ -1,0 +1,267 @@
+\documentclass[10pt,a4paper,landscape]{article}
+\usepackage{multicol}
+\usepackage{multienum}
+\usepackage{comment}
+\usepackage[landscape]{geometry}
+\usepackage[x11names]{xcolor}
+\usepackage{enumitem}
+\usepackage{calc}
+\usepackage{siunitx}
+% Set paper size and margins
+\geometry{top=.3cm,left=.5cm,right=.5cm,bottom=.5cm}
+
+% Turn off header and footer
+\pagestyle{empty}
+
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\subsection}[1]{\@startsection{subsection}{2}{0mm}%
+                                {20ex}%
+                                {0.8ex}%
+                                {\color{white}\normalfont\small\bfseries}{\colorbox{darkgray}{\makebox[\linewidth-\fboxsep*2]{#1\hfill}}}}
+\makeatother
+\newenvironment{chklstsection}[1]{%
+  \begin{minipage}{\columnwidth}%
+    \subsection{#1}\begin{itemize}[label={},left=0em,labelsep=0em,nosep]}%
+    {\end{itemize}\vspace{8pt}\end{minipage}}
+\newenvironment{chklstsection*}[1]{%
+  \begin{minipage}{\columnwidth}%
+    \subsection{#1}}%
+    {\end{minipage}}
+\newcommand{\chklstitem}[2]{\item#1\dotfill{\textbf{#2}}}
+\newcommand{\chklstitemn}[2]{\item#1\dotfill{#2}}
+\newcommand{\pagetitle}[1]{\begin{center}%
+\large{\colorbox{DodgerBlue3}{\makebox[\linewidth-\fboxsep*2]{\textbf{\color{white}#1}}}}
+  \end{center}%
+}
+\newcommand{\Vspeed}[1]{\ensuremath{\text{V}_{\text{#1}}}}%
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+\newcommand{\spanitem}[1]{\item{
+\vspace{0.6em}
+\begin{center}
+\textbf{#1}
+\end{center}}
+\vspace{0.5em}
+}
+
+\sisetup{detect-all,range-units=single,range-phrase=\,--\,}
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+
+\raggedright
+\raggedcolumns
+\footnotesize
+\pagetitle{Diamond DA 62 Checklist}
+
+\begin{multicols}{4}
+% multicol parameters
+% These lengths are set only within the four main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{chklstsection}{Before Starting Engine}
+	\chklstitem{Fuel Selectors}{ON}
+  \chklstitem{Preflight Inspection}{COMPLETE}
+  \chklstitem{Passengers}{INSTRUCTED}
+  \chklstitem{Passenger Door}{LOCKED}
+  \chklstitem{Backrests}{SECURE}
+  \chklstitem{Rudder Pedals}{ADJUSTED}
+  \chklstitem{Safety Harnesses}{ADJUSTED}
+  \chklstitem{Power Lever}{IDLE}
+  \chklstitem{Parking Brake}{SET}
+  \chklstitem{Avionic Master}{OFF}
+  \chklstitem{Gear Selector}{DOWN}
+  \chklstitem{Voter Switch}{BOTH AUTO}
+  \chklstitem{Alternators}{BOTH ON}
+  \chklstitem{Fuel Pump LH/RH}{OFF}
+  \chklstitem{Electric Master}{ON}
+  \chklstitem{G1000}{POWERED UP}
+  \chklstitem{Fuel Temperature}{CHECK}
+\end{chklstsection}
+
+\begin{chklstsection}{Starting Engine}
+	\chklstitem{Strobe Lights (ACL)}{ON}
+	\chklstitem{Engine Master}{ON (L)}
+	\chklstitem{Annunciations}{"L ENGINE GLOW" ON}
+	\chklstitem{Annunciations/System Page}{CHECK}
+	\spanitem{After L ENGINE GLOW Off}
+	\chklstitem{Start Left Button}{PRESS}
+	\chklstitem{Annunciations/System Page}{CHECK}
+	\chklstitem{Starter}{OFF}
+	\chklstitem{Oil Pressure}{CHECK OK}
+	\chklstitem{Circuit Breakers}{CHECK IN}
+	\chklstitem{Idle RPM}{CHECK 710 $ \pm $ 30}
+	\spanitem{Repeat for Other Engine}
+\end{chklstsection}
+
+\begin{chklstsection}{Before Taxiing}
+	\chklstitem{Avionic Master}{ON}
+	\chklstitem{Power Lever}{AS REQ}
+	\chklstitem{Instruments and Avionics}{SET AS REQ}
+	\chklstitem{Flood Light}{TEST, AS REQ}
+	\chklstitem{Pitot Heat}{ON, TEST ANNUNCIATION}
+	\chklstitem{Pitot Heat}{OFF}
+	\chklstitem{Strobe Lights (ACL)}{ON}
+	\chklstitem{Position, Landing and Taxi Lights}{AS REQ}
+	\chklstitem{Primary Flight Display}{NO AUTOPILOT}
+	\chklstitem{Autopilot}{ENGAGE}
+	\chklstitem{AP Disc Switch}{TEST}
+	\chklstitem{Trim}{SET T/O}
+\end{chklstsection}
+
+\begin{chklstsection}{Taxiing}
+	\chklstitem{Parking Brake}{RELEASE}
+	\chklstitem{Brakes}{TEST}
+	\chklstitem{Nose Wheel Steering}{TEST}
+	\chklstitem{Instruments and Avionics}{CHECK}
+	\chklstitem{Fuel Pumps}{OFF}
+	\chklstitem{Fuel Selector}{CROSSFEED (LH/RH)}
+	\spanitem{Test Crossfeed 30 Seconds \\ While Taxiing}
+	\chklstitem{Fuel Selector}{ON (LH/RH)}
+\end{chklstsection}
+
+\begin{chklstsection}{Before Take Off}
+	\chklstitem{Position}{INTO WIND}
+	\chklstitem{Parking Brake}{SET}
+	\chklstitem{Backrests}{SECURE}
+	\chklstitem{Harnesses}{SECURE}
+	\chklstitem{Passenger Door}{LOCKED}
+	\chklstitem{LH \& RH Pilot Doors}{LOCKED}
+	\chklstitem{Front Baggage Doors}{CLOSED}
+	\chklstitem{Door Warning}{CHECK OFF}
+	\chklstitem{Annunciations/System Page}{CHECK}
+	\chklstitem{Circuit Breakers}{CHECK IN}
+	\chklstitem{Pitch Trim}{SET T/O}
+	\chklstitem{Fuel Selector}{ON (LH/RH)}
+	\chklstitem{Yaw Trim}{CENTERED}
+	\chklstitem{Flaps}{CHECK, SET T/O}
+	\chklstitem{Flight Controls}{FREE \& CORRECT}
+	\chklstitem{Pitot Heat}{AS REQ}
+	\chklstitem{Landing Light}{ON}
+	\chklstitem{Power Lever}{IDLE}
+	\chklstitem{Propeller RPM}{Below 1000 RPM}
+	\chklstitem{Fuel Pumps}{OFF}
+	\spanitem{Repeat Following Steps \\ For Each Engine}
+	\chklstitem{Voter Switch}{ECU A}
+	\chklstitem{Voter Switch}{AUTO}
+	\chklstitem{Voter Switch}{ECU B}
+	\chklstitem{Voter Switch}{AUTO}
+	\spanitem{Engine Should Run \\ Without Change}
+	\chklstitem{Temperatures}{GREEN}
+	\chklstitem{Parking Brake}{SET}
+	\chklstitem{ECU Test}{HOLD}
+	\chklstitem{ECU A/B Fail Lights}{BOTH OFF}
+	\chklstitem{ECU Test}{RELEASE}
+	\chklstitem{Parking Brake}{RELEASE}
+	\chklstitem{Fuel Pumps LH/RH}{ON}
+\end{chklstsection}
+
+\begin{chklstsection}{Take Off}
+	\chklstitem{Transponder}{AS REQ}
+	\chklstitem{Power Lever}{MAX}
+  \chklstitem{Nose Wheel Lift-off}{76-78 KIAS}
+  \chklstitem{Climb Speed}{83-86 KIAS}
+  \spanitem{Positive Climb}
+  \chklstitem{Landing Gear}{APPLY BRAKES, UP}
+  \chklstitem{Alternate Air}{OPEN IN RAIN/SNOW}
+\end{chklstsection}
+
+\begin{chklstsection}{Climb}
+	\chklstitem{Landing Light}{OFF}
+	\chklstitem{Landing Gear}{UP}
+	\chklstitem{Flaps}{UP}
+	\chklstitem{Fuel Pumps LH/RH}{OFF}
+	\chklstitem{Best Rate}{87-89 KIAS}
+	\chklstitem{Cruise Climb}{93-96 KIAS}
+	\chklstitem{Power Lever}{UP TO 95\%}
+	\chklstitem{Annunciations/Engine}{CHECK}
+\end{chklstsection}
+
+\begin{chklstsection}{Crusie}
+	\chklstitem{Power Lever}{UP TO 95\%}
+	\chklstitem{Recommended Cruise Power}{75\%}
+	\chklstitem{Trim}{AS REQ}
+	\chklstitem{Annunciations/Engine}{CHECK}
+\end{chklstsection}
+
+\begin{chklstsection}{Descent}
+	\chklstitem{Power Lever}{AS REQ}
+	\chklstitem{Airspeed}{AS REQ}
+	\chklstitem{Trim}{AS REQ}
+	\chklstitem{Annunciations/Engine}{Monitor}
+\end{chklstsection}
+
+\begin{chklstsection}{Approach and Landing}
+	\chklstitem{Backrests}{SECURE}
+	\chklstitem{Harnesses}{SECURE}
+	\chklstitem{Yaw Damper}{OFF}
+	\chklstitem{Controls}{UNRESTRICTED}
+	\chklstitem{Landing Light}{ON}
+	\chklstitem{Gear Warning Horn}{TEST}
+	\chklstitem{Fuel Selector}{BOTH ON}
+	\chklstitem{Fuel Pumps LH/RH}{ON}
+	\chklstitem{Landing Gear}{DOWN, 3 GREEN}
+	\chklstitem{Parking Brake}{CHECK RELEASED}
+	\chklstitem{Trim}{AS REQ}
+	\chklstitem{Speed}{91-95 KIAS}
+	\chklstitem{Flaps}{AS REQ}
+	\chklstitem{Final Approach}{84-89 KIAS}
+\end{chklstsection}
+
+\begin{chklstsection}{Go Around}
+	\chklstitem{Power Lever}{MAX}
+	\chklstitem{Flaps}{T/O}
+	\chklstitem{Airspeed}{88-91 KIAS}
+	\spanitem{When Positive Climb Established}
+	\chklstitem{Landing Gear}{UP}
+	\chklstitem{Flaps}{UP}
+	\chklstitem{Fuel Pumps LH/RH}{OFF}
+\end{chklstsection}
+
+\begin{chklstsection}{After Landing}
+	\chklstitem{Power Lever}{IDLE}
+	\chklstitem{Brakes}{AS REQ}
+	\chklstitem{Alternate Air}{CLOSED}
+	\chklstitem{Pitot Heat}{OFF}
+	\chklstitem{Avionics}{AS REQ}
+	\chklstitem{Lights}{AS REQ}
+	\chklstitem{Flaps}{UP}
+	\chklstitem{Fuel Pumps LH/RH}{OFF}
+\end{chklstsection}
+
+\begin{chklstsection}{Shut Down}
+	\chklstitem{Parking Brake}{SET}
+	\chklstitem{Power Lever}{UP TO 10\% FOR 1 MIN}
+	\chklstitem{Engine/System Page}{CHECK}
+	\chklstitem{ELT}{CHECK NOT ACTIVATED}
+	\chklstitem{Avionic Master}{OFF}
+	\chklstitem{Engine Matser}{OFF}
+	\chklstitem{Anti Collision Lights (ACL}{OFF}
+	\chklstitem{Electric Master}{OFF}
+\end{chklstsection}
+
+\scriptsize
+\begin{chklstsection}{Speeds KIAS}
+	\spanitem{Up to 1999kg}
+  \chklstitemn{\Vspeed{R} Flaps UP}{80}
+	\chklstitemn{\Vspeed{R} Flaps T/O}{76}
+
+  \vspace{\medskipamount}
+  \chklstitemn{\Vspeed{Y} Flaps UP}{87}
+  \chklstitemn{\Vspeed{Y} Flaps T/O}{83}
+  \chklstitemn{\Vspeed{X} Flaps T/O}{83}
+  \chklstitemn{\Vspeed{cruise climb}}{93}
+
+  \vspace{\medskipamount}
+	\chklstitemn{\Vspeed{SSE}}{86}
+\end{chklstsection}
+\end{multicols}
+\end{document}

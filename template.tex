@@ -1,0 +1,299 @@
+\documentclass[10pt,a4paper,landscape]{article}
+\usepackage{multicol}
+\usepackage{multienum}
+\usepackage{comment}
+\usepackage[landscape]{geometry}
+\usepackage[x11names]{xcolor}
+\usepackage{enumitem}
+\usepackage{calc}
+\usepackage{siunitx}
+% Set paper size and margins
+\geometry{top=.5cm,left=.5cm,right=.5cm,bottom=.5cm}
+
+% Turn off header and footer
+\pagestyle{empty}
+
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\subsection}[1]{\@startsection{subsection}{2}{0mm}%
+                                {20ex}%
+                                {0.8ex}%
+                                {\color{white}\normalfont\small\bfseries}{\colorbox{darkgray}{\makebox[\linewidth-\fboxsep*2]{#1\hfill}}}}
+\makeatother
+\newenvironment{chklstsection}[1]{%
+  \begin{minipage}{\columnwidth}%
+    \subsection{#1}\begin{itemize}[label={},left=0em,labelsep=0em,nosep]}%
+    {\end{itemize}\vspace{8pt}\end{minipage}}
+\newenvironment{chklstsection*}[1]{%
+  \begin{minipage}{\columnwidth}%
+    \subsection{#1}}%
+    {\end{minipage}}
+\newcommand{\chklstitem}[2]{\item#1\dotfill{\textbf{#2}}}
+\newcommand{\chklstitemn}[2]{\item#1\dotfill{#2}}
+\newcommand{\pagetitle}[1]{\begin{center}%
+\large{\colorbox{DodgerBlue3}{\makebox[\linewidth-\fboxsep*2]{\textbf{\color{white}#1}}}}
+  \end{center}%
+}
+
+\newcommand{\spanitem}[1]{\item{
+\vspace{0.6em}
+\begin{center}
+\textbf{#1}
+\end{center}}
+\vspace{0.5em}
+}
+
+\newcommand{\Vspeed}[1]{\ensuremath{\text{V}_{\text{#1}}}}%
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+\sisetup{detect-all,range-units=single,range-phrase=\,--\,}
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+
+\raggedright
+\raggedcolumns
+\footnotesize
+\pagetitle{LX-LEM C10T Normal Checklist}
+
+\begin{multicols}{4}
+% multicol parameters
+% These lengths are set only within the four main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{chklstsection}{Cockpit Preparation}
+  \chklstitem{Preflight Inspection}{COMPLETE}
+  \chklstitem{A/C documents}{ABOARD}
+  \chklstitem{Weight \& Balance}{IN LIMITS}
+  \chklstitem{Cabin Door}{CLOSED}
+  \chklstitem{Seatbelts}{FASTENED}
+  \chklstitem{All Switches (except Beacon)}{OFF}
+  \chklstitem{Circuit Breakers}{ALL IN}
+  \chklstitem{Controls}{FREE \& CORRECT}
+  \chklstitem{PAX Briefing}{COMPLETE}
+\end{chklstsection}
+\begin{chklstsection}{Before Starting Engine}
+  \chklstitem{Continuous Ignition}{OFF}
+  \chklstitem{Engine Inlet Heat}{OFF}
+  \chklstitem{Dump Valve}{IN}
+  \chklstitem{Bleed Air}{OUT}
+  \chklstitem{Cabin Altitude}{SET}
+  \chklstitem{Cabin Pressure}{ON}
+  \chklstitem{Gear Lever}{DOWN}
+  \chklstitem{Power Lever}{GROUND IDLE}
+  \chklstitem{Condition Lever}{CUTOFF}
+  \chklstitem{Fuel Shutoff Valve}{ON (PUSHED)}
+  \chklstitem{Fuel Selector}{BOTH}
+  \chklstitem{Cowl Flaps}{FULL OPEN}
+  \chklstitem{Air Conditioner}{OFF}
+  \chklstitem{Start-up Clearance}{RECEIVED}
+\end{chklstsection}
+\begin{chklstsection}{Starting Engine\quad{\color{red} MAX 60s}}
+  \chklstitem{Master Switch}{ON}
+  \chklstitem{Oil Temperature}{\(\geq\SI{-40}{\degreeCelsius}\)}
+  \chklstitem{Battery}{\SI{24}{V}}
+  \chklstitem{Landing Gear Light}{GREEN}
+  \chklstitem{Annunciator}{TEST}
+  \chklstitem{Aux Instrument Air}{TEST (\SIrange{4.6}{5.4}{psi})}
+  \chklstitem{Aux Instrument Air}{OFF}
+  \chklstitem{Beacon}{ON}
+  \chklstitem{Boost Pump 1 and 2}{TEST}
+  \chklstitem{Boost Pimp}{ONE ON}
+  \chklstitem{Prop Area}{CLEAR}
+  {\color{red}\chklstitem{TOT}{\(\leq \SI{150}{\degreeCelsius}\)}}
+  \chklstitem{Starter}{ENGAGE}
+  \chklstitem{N1}{MAX ACHIEVABLE}
+  \chklstitem{\qquad \(>\SI{7}{\degreeCelsius}\)}{MIN 15\%}
+  \chklstitem{\qquad \(\SIrange[range-phrase=\text{ to },range-units=repeat]{-18}{7}{\degreeCelsius}\)}{MIN 13\%}
+  \chklstitem{\qquad \(<\SI{-18}{\degreeCelsius}\)}{MIN 12\%}
+  {\color{red}
+    \chklstitem{TOT \SIrange{810}{927}{\degreeCelsius}}{MAX 10s}
+    \chklstitem{TOT \SIrange{843}{927}{\degreeCelsius}}{MAX \hphantom{1}6s}
+    \chklstitem{TOT at \SI{927}{\degreeCelsius}}{MAX \hphantom{0}1s}}
+  \chklstitem{Np}{CHECK rotating by 25\% N1}
+  \chklstitem{N1}{STABILISED at 59 -- 63\%}
+  \chklstitem{Starter}{OFF}
+  \chklstitem{Oil Pressure}{POSITIVE and \(\leq\SI{150}{psi}\)}
+\end{chklstsection}
+\begin{chklstsection}{After Starting Engine}
+  \chklstitem{Np}{STABILISED}
+  \chklstitem{Generator}{RESET / ON}
+  \chklstitem{Avionics}{ON}
+  \chklstitem{Landing Gear Horn}{PRESS}
+  \chklstitem{Altimeters}{SET on QNH}
+  \chklstitem{Instruments}{SET}
+  \chklstitem{GPS position}{ACQUIRED}
+  \chklstitem{AP master}{ON}
+  \chklstitem{Electric Trim}{ON}
+  \chklstitem{Circuit Breakers}{CHECK IN}
+\end{chklstsection}
+\begin{chklstsection}{Before Takeoff}
+  \chklstitem{Oil Pressure}{GREEN}
+  \chklstitem{Engine running time}{\(\geq \SI{1}{min}\)}
+  \chklstitem{Power lever}{Np 1725}
+  \chklstitem{Governor overspeed}{CHECK}
+
+  \hfill Press for MAX \SI{20}{s}. Np drop to 1600.
+  \chklstitem{Beta Light}{CHECK}
+  \chklstitem{Flaps}{\ang{10} SET}
+  \chklstitem{Rudder Trim}{FULL RIGHT}
+  \chklstitem{Elevator Trim}{T/O SET}
+  \chklstitem{Transfer Pumps}{OFF}
+  \chklstitem{Window}{LOCKED}
+\end{chklstsection}
+\begin{chklstsection*}{Instrument Cross-Check}
+\end{chklstsection*}
+\begin{chklstsection*}{Departure \scriptsize Setup, ATC Clearance \& Briefing}
+\end{chklstsection*}
+\begin{chklstsection*}{Safety Briefing}
+\end{chklstsection*}
+\begin{chklstsection}{Taxi}
+  \chklstitem{ATC Clearance}{RECEIVED}
+  \chklstitem{Taxi Light}{ON}
+  \chklstitem{Brakes \& Steering}{CHECKED}
+  \chklstitem{Horizon}{STABILISED}
+  \chklstitem{Turn Coordinator}{CHECKED}
+  \chklstitem{Instrument Cross-Check}{COMPLETE}
+\end{chklstsection}
+\begin{chklstsection}{Into Position}
+  \chklstitem{Continuous Ignition}{ON}
+  \chklstitem{Engine Inlet Heat}{AS REQUIRED}
+  \chklstitem{AP master}{ON}
+  \chklstitem{Electric Trim}{ON}
+  \chklstitem{Propeller Anti-Ice}{AS REQUIRED}
+  \chklstitem{Pitot Heat}{ON}
+  \chklstitem{Landing Light}{ON}
+  \chklstitem{Transponder}{SET \& ALT}
+  \chklstitem{Runway Elevation \& Heading}{CHECK}
+  \chklstitem{Condition Lever}{HIGH}
+  \chklstitem{Engine}{IN LIMITS}
+\end{chklstsection}
+\begin{chklstsection}{After Takeoff}
+  \chklstitem{Gear}{UP (orange)}
+  \chklstitem{Condition Lever}{2000}
+  \chklstitem{Flaps (\(\geq \SI{400}{ft}\) AAL)}{UP}
+  \chklstitem{Landing Light}{AS REQUIRED}
+  \chklstitem{Bleed Air}{ON}
+  \chklstitem{Door Safety Lock}{LOCK}
+  \chklstitem{Continuous Ignition}{AS REQUIRED}
+  \chklstitem{Cowl Flaps}{AS REQUIRED}
+  \chklstitem{Transfer Pumps}{AS REQUIRED}
+  \chklstitem{Altimeters}{QNE}
+  \chklstitem{Time}{COPIED}
+\end{chklstsection}
+\begin{chklstsection}{Passing \SI{10000}{ft}}
+  \chklstitem{Cabin Pressure}{CHECK}
+\end{chklstsection}
+\begin{chklstsection}{Cruise}
+  \chklstitem{Condition Lever}{\SI{1920}{RPM}}
+  \chklstitem{Cowl Flaps}{CLOSED}
+\end{chklstsection}
+\begin{chklstsection}{Descent}
+  \chklstitem{Cowl Flaps}{CLOSED}
+  \chklstitem{Cabin Pressure}{SET}
+  \chklstitem{Approach Briefing}{COMPLETE}
+\end{chklstsection}
+\begin{chklstsection}{Approach}
+  \chklstitem{ATIS}{COPIED}
+  \chklstitem{Door Safety Lock}{UNLOCK}
+  \chklstitem{Continuous Ignition}{ON}
+  \chklstitem{Door Seals}{DEFLATE}
+  \chklstitem{Bleed Air}{OFF}
+  \chklstitem{Altimeters}{SET on QNH}
+  \chklstitem{Gyro}{CHECKED}
+  \chklstitem{Landing Light}{ON}
+  \chklstitem{Navigation Settings}{COMPLETE}
+  \chklstitem{\Vspeed{REF} / \Vspeed{TGT}}{\rule{1em}{.4pt} / \rule{1em}{.4pt}}
+  \chklstitem{Minimums}{SET and MEMORISED}
+\end{chklstsection}
+\begin{chklstsection}{Final}
+  \chklstitem{Gear}{DOWN \& GREEN}
+  \chklstitem{Flaps}{SET}
+  \chklstitem{Condition Level}{FULL INCREASE}
+  \chklstitem{Landing Light}{ON}
+\end{chklstsection}
+\begin{chklstsection}{After Landing}
+  \chklstitem{Continuous Ignition}{OFF}
+  \chklstitem{Engine Inlet Heat}{OFF}
+  \chklstitem{Pitot Heat}{OFF}
+  \chklstitem{Propeller Anti-Ice}{OFF}
+  \chklstitem{Landing Light}{OFF}
+  \chklstitem{Taxi Light}{ON}
+  \chklstitem{Flaps}{UP}
+  \chklstitem{Cowl Flaps}{FULL OPEN}
+  \chklstitem{Air Conditioner}{AS REQUIRED}
+\end{chklstsection}
+\begin{chklstsection}{Engine Shutdown}
+  \chklstitem{Power Lever}{GROUND IDLE}
+  \chklstitem{Time}{COPIED}
+  \chklstitem{Parking Brake}{SET}
+  \chklstitem{Air Conditioner}{OFF}
+  \chklstitem{Transponder}{2000}
+  \chklstitem{Flight Timers}{COPIED}
+  \chklstitem{Avionics}{OFF}
+  \chklstitem{All Electrical Switches except Beacon}{OFF}
+  \chklstitem{Time Elapsed}{\SI{2}{min}}
+  \chklstitem{Generator}{OFF}
+  \chklstitem{Boost Pump}{OFF}
+  \chklstitem{Brakes}{HOLD}
+  \chklstitem{Condition Lever}{CUTOFF}
+  {\color{red}\chklstitem{TOT}{WATCH}}
+  \chklstitem{Master Switch}{OFF}
+  \chklstitem{Fuel Selector}{LEFT or RIGHT}
+\end{chklstsection}
+\begin{chklstsection}{Securing}
+  \chklstitem{Gust Lock}{INSTALLED}
+  \chklstitem{Cowl Flaps}{CLOSED}
+  \chklstitem{Flight Plan}{CLOSED}
+  \chklstitem{Pitot Tube Cover}{INSTALLED}
+  \chklstitem{Tie Downs}{INSTALLED}
+  \chklstitem{Chocks}{INSTALLED}
+\end{chklstsection}
+
+\scriptsize
+\begin{chklstsection}{Speeds KIAS}
+  \chklstitemn{\Vspeed{R}}{65}
+  \chklstitemn{\Vspeed{LOF}}{70}
+
+  \vspace{\medskipamount}
+  \chklstitemn{\Vspeed{S0} MTOW}{59}
+  \chklstitemn{\Vspeed{S1} \ang{30} MTOW}{74}
+
+  \vspace{\medskipamount}
+  \chklstitemn{\Vspeed{X}}{80}
+  \chklstitemn{\Vspeed{Y}}{100}
+  \chklstitemn{\Vspeed{cruise climb}}{\numrange{110}{140}}
+
+  \vspace{\medskipamount}
+  \chklstitemn{\Vspeed{BG} \SI{4000}{lb}}{94}
+  \chklstitemn{\Vspeed{BG} \SI{3350}{lb}}{86}
+  \chklstitemn{\Vspeed{BG} \SI{2700}{lb}}{77}
+
+  \vspace{\medskipamount}
+  \chklstitemn{\Vspeed{A} \SI{4000}{lb}}{130}
+  \chklstitemn{\Vspeed{A} \SI{3350}{lb}}{119}
+  \chklstitemn{\Vspeed{A} \SI{2700}{lb}}{106}
+
+  \vspace{\medskipamount}
+  \chklstitemn{\Vspeed{FE} \ang{10}}{160}
+  \chklstitemn{\Vspeed{FE} \ang{20}}{130}
+  \chklstitemn{\Vspeed{FE} \ang{30}}{115}
+
+  \vspace{\medskipamount}
+  \chklstitemn{\Vspeed{LO}}{165}
+  \chklstitemn{\Vspeed{LE}}{167}
+  \chklstitemn{\Vspeed{MO}}{167}
+  \chklstitemn{\Vspeed{WO}}{167}
+
+  \vspace{\medskipamount}
+  \chklstitemn{Max Demonstreated Crosswind}{21}
+\end{chklstsection}
+\end{multicols}
+\end{document}
